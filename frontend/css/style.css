@@ -1,0 +1,273 @@
+/* ==========================================================
+   Academic AI Dashboard — visual system
+   Subject: a medical college's academic office — clinical,
+   legible, calm. Not a generic SaaS admin theme.
+
+   Palette
+   --ink:      #16233A  deep clinical navy (text, headers)
+   --paper:    #F3F1EA  warm chart-paper background
+   --line:     #D8D3C4  hairline rule / border
+   --sage:     #3E6B5C  medical sage-green (primary accent)
+   --amber:    #B8703B  clay amber (risk / attention accent)
+   --panel:    #FFFFFF  card surface
+
+   Type
+   - Display/headers: "Source Serif 4" — academic, textbook feel
+   - Body/data:        "IBM Plex Sans" — clean, legible at small sizes,
+                        has real tabular figures for numeric tables
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+    --ink: #16233A;
+    --paper: #F3F1EA;
+    --line: #D8D3C4;
+    --sage: #3E6B5C;
+    --sage-light: #E4ECE8;
+    --amber: #B8703B;
+    --amber-light: #F5E7DB;
+    --panel: #FFFFFF;
+    --muted: #6B7280;
+    font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    margin: 0 0 0.4em;
+    letter-spacing: -0.01em;
+}
+
+a { color: var(--sage); }
+
+/* ---- Layout shell ---- */
+.app-shell {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background: var(--ink);
+    color: #E9E4D8;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.sidebar .brand {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 16px;
+}
+
+.sidebar .brand small {
+    display: block;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.72rem;
+    color: #A9B3C4;
+    margin-top: 4px;
+}
+
+.sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+
+.sidebar nav a {
+    color: #C7CEDC;
+    text-decoration: none;
+    font-size: 0.92rem;
+    padding: 9px 10px;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+}
+
+main {
+    padding: 36px 44px;
+    max-width: 1120px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px;
+}
+
+.page-header p {
+    color: var(--muted);
+    margin: 4px 0 0;
+    font-size: 0.94rem;
+}
+
+/* ---- Stat row: varied treatment, not identical cards ---- */
+.stat-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 32px;
+}
+
+.stat {
+    background: var(--panel);
+    padding: 20px 22px;
+}
+
+.stat.hero {
+    background: var(--sage);
+    color: #fff;
+}
+
+.stat .figure {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2.1rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.stat .label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.stat.hero .label { color: #DCEAE3; }
+
+/* ---- Panels ---- */
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 24px 26px;
+    margin-bottom: 24px;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+}
+
+.panel-head h2 { font-size: 1.15rem; }
+.panel-head .hint { font-size: 0.82rem; color: var(--muted); }
+
+/* ---- Table ---- */
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+    padding: 8px 10px;
+    font-size: 0.78rem;
+}
+
+td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #EDEAE0;
+    font-variant-numeric: tabular-nums;
+}
+
+tr:last-child td { border-bottom: none; }
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 0.78rem;
+}
+
+.badge.low { background: var(--sage-light); color: var(--sage); }
+.badge.medium { background: var(--amber-light); color: var(--amber); }
+.badge.high { background: #F4DAD2; color: #A33D26; }
+.badge.insufficient_data { background: #EEEEEE; color: var(--muted); }
+
+/* ---- Login page ---- */
+.login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper);
+}
+
+.login-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 40px 36px;
+    width: 340px;
+}
+
+.login-card h1 { font-size: 1.4rem; }
+.login-card p.sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 24px; }
+
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: 0.82rem; margin-bottom: 6px; color: var(--muted); }
+.field input {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.94rem;
+}
+.field input:focus { outline: 2px solid var(--sage); outline-offset: 1px; }
+
+button.primary {
+    width: 100%;
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 11px;
+    font-family: inherit;
+    font-size: 0.92rem;
+    cursor: pointer;
+    margin-top: 6px;
+}
+button.primary:hover { background: var(--sage); }
+
+.form-error {
+    color: #A33D26;
+    font-size: 0.84rem;
+    margin-top: 10px;
+    min-height: 1em;
+}
+
+.demo-hint {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+}
+
+@media (max-width: 720px) {
+    .app-shell { grid-template-columns: 1fr; }
+    .sidebar { flex-direction: row; overflow-x: auto; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    main { padding: 24px; }
+}

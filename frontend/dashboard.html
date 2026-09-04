@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic AI Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.3/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      Academic AI Dashboard
+      <small>President Abdul Hamid Medical College</small>
+    </div>
+    <nav>
+      <a href="#" class="active">Overview</a>
+      <a href="#students-panel">Students</a>
+      <a href="#risk-panel">Risk insight</a>
+      <a href="#schedule-panel">Schedule</a>
+    </nav>
+    <div style="margin-top:auto; font-size:0.78rem; color:#8B93A6;">
+      Signed in as <span id="user-name">—</span>
+      <br><a href="#" id="logout-link" style="color:#C7CEDC;">Sign out</a>
+    </div>
+  </aside>
+
+  <main>
+    <div class="page-header">
+      <div>
+        <h1>Overview</h1>
+        <p>Attendance, scheduling, and AI-assisted risk insight in one view.</p>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat hero">
+        <div class="figure" id="stat-total-students">—</div>
+        <div class="label">Students on record</div>
+      </div>
+      <div class="stat">
+        <div class="figure" id="stat-total-faculty">—</div>
+        <div class="label">Faculty members</div>
+      </div>
+      <div class="stat">
+        <div class="figure" id="stat-classes-week">—</div>
+        <div class="label">Classes scheduled / week</div>
+      </div>
+      <div class="stat">
+        <div class="figure" id="stat-at-risk">—</div>
+        <div class="label">Flagged medium/high risk</div>
+      </div>
+    </div>
+
+    <div class="panel" id="risk-panel">
+      <div class="panel-head">
+        <h2>Attendance risk insight</h2>
+        <span class="hint">Scored by the Django AI microservice</span>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Roll no.</th><th>Name</th><th>Batch</th><th>Attendance</th><th>Risk</th><th>Recommended action</th></tr>
+        </thead>
+        <tbody id="risk-table-body">
+          <tr><td colspan="6">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Attendance trend</h2>
+        <span class="hint">Class-wide, last 4 weeks (demo data)</span>
+      </div>
+      <canvas id="attendance-chart" height="90"></canvas>
+    </div>
+
+    <div class="panel" id="students-panel">
+      <div class="panel-head">
+        <h2>Students</h2>
+        <span class="hint" id="student-count-hint"></span>
+      </div>
+      <table>
+        <thead><tr><th>Roll no.</th><th>Name</th><th>Batch</th><th>Department</th></tr></thead>
+        <tbody id="students-table-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="schedule-panel">
+      <div class="panel-head">
+        <h2>Class schedule</h2>
+      </div>
+      <table>
+        <thead><tr><th>Course</th><th>Day</th><th>Time</th><th>Room</th></tr></thead>
+        <tbody id="schedule-table-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
