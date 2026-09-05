@@ -3,7 +3,7 @@
  * Adjust API_BASE if the PHP backend isn't served at the same
  * host, e.g. 'http://localhost:8080/backend-php'.
  */
-const API_BASE = 'http://localhost:8080/backend-php';
+const API_BASE = 'https://academic-ai-php-backend.onrender.com';
 
 async function request(path, { method = 'GET', body, auth = false } = {}) {
   const headers = { 'Content-Type': 'application/json' };
