@@ -4,9 +4,17 @@ A full-stack portfolio project built for the **Academic AI Program Lead** role a
 
 ## Live Demo
 
-- **Dashboard:** https://rrahul178.github.io/academic-ai-dashboard/
+This project is fully deployed — no setup needed to try it:
+
+- **Dashboard (GitHub Pages):** https://rrahul178.github.io/academic-ai-dashboard/
 - **Login:** `admin@pahmc.edu.bd` / `admin123`
+- **PHP backend (Render):** https://academic-ai-php-backend.onrender.com
+- **Django AI service (Render):** https://academic-ai-dashboard.onrender.com
 - **Source code:** https://github.com/rrahul178/academic-ai-dashboard
+
+> Note: both backends run on Render's free tier, so the first request after
+> a period of inactivity can take up to ~50 seconds while the service wakes
+> up. Refreshing after that first load is instant.
 
 ## What It Does
 
@@ -29,7 +37,10 @@ The PHP backend calls the Django service internally (server-to-server) to get ea
 - All database queries use prepared statements (SQL-injection safe)
 - A shared secret key protects the internal PHP → Django connection
 
-## Running It Locally
+## Running It Locally (optional — for reviewing the code)
+
+The live demo above already works end-to-end. These steps are only for
+someone who wants to download the code and run it on their own machine.
 
 ```bash
 # PHP backend
